@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống Tự Học Khoa Học Tự Nhiên</title>
+    <style>
+        :root {
+            --primary: #0284c7;
+            --success: #16a34a;
+            --warning: #ea580c;
+            --dark: #0f172a;
+            --light-bg: #f8fafc;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* --- Sidebar Cố Định --- */
+        .sidebar {
+            width: 260px;
+            background-color: var(--dark);
+            color: white;
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .sidebar-brand {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #38bdf8;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .menu-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .menu-item {
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .menu-item.active, .menu-item:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* --- Vùng Nội Dung Chính --- */
+        .main-content {
+            flex: 1;
+            padding: 2.5rem;
+            overflow-y: auto;
+        }
+
+        .header-title {
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+        }
+
+        /* --- Khối Flashcard Kiến Thức --- */
+        .flashcard-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .flashcard {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary);
+        }
+
+        .flashcard-tag {
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .flashcard-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .flashcard-formula {
+            background-color: #f1f5f9;
+            padding: 0.5rem;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 1rem;
+            color: #ef4444;
+            text-align: center;
+        }
+
+        /* --- Khu Vực Trắc Nghiệm Ôn Tập --- */
+        .quiz-box {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            max-width: 700px;
+        }
+
+        .question-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .option-btn {
+            width: 100%;
+            padding: 1rem;
+            text-align: left;
+            background-color: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        .option-btn:hover {
+            background-color: #e2e8f0;
+        }
+
+        .score-text {
+            font-weight: bold;
+            color: var(--success);
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Thanh Menu Bên Trái -->
+    <div class="sidebar">
+        <div class="sidebar-brand">🧬 KHTN Dashboard</div>
+        <ul class="menu-list">
+            <li class="menu-item active">Trang Tổng Quan</li>
+            <li class="menu-item" onclick="alert('Tính năng thư viện video bài giảng đang được phát triển!')">Thư Viện Bài Giảng</li>
+            <li class="menu-item" onclick="alert('Bảng xếp hạng học tập sẽ mở sau khi bạn đăng nhập!')">Bảng Xếp Hạng</li>
+        </ul>
+    </div>
+
+    <!-- Nội Dung Hiển Thị Bên Phải -->
+    <div class="main-content">
+        <h1 class="header-title">Sổ Tay Công Thức Nhanh</h1>
+        
+        <!-- Khối thẻ ghi nhớ -->
+        <div class="flashcard-container">
+            <div class="flashcard">
+                <div class="flashcard-tag">Vật Lý</div>
+                <div class="flashcard-title">Trọng lượng vật thể</div>
+                <div class="flashcard-formula">P = 10 * m</div>
+            </div>
+            <div class="flashcard" style="border-top-color: var(--success);">
+                <div class="flashcard-tag" style="color: var(--success);">Hóa Học</div>
+                <div class="flashcard-title">Tính số mol chất</div>
+                <div class="flashcard-formula">n = m / M</div>
+            </div>
+            <div class="flashcard" style="border-top-color: var(--warning);">
+                <div class="flashcard-tag" style="color: var(--warning);">Sinh Học</div>
+                <div class="flashcard-title">Hiệu suất Quang hợp</div>
+                <div class="flashcard-formula">CO₂ + H₂O ➔ C₆H₁₂O₆</div>
+            </div>
+        </div>
+
+        <h1 class="header-title">Thử Thách Trắc Nghiệm Đánh Giá</h1>
+
+        <!-- Khối câu hỏi trắc nghiệm -->
+        <div class="quiz-box">
+            <div class="question-text" id="questionField">Đang tải câu hỏi...</div>
+            <div class="options-list" id="optionsField"></div>
+            <div id="quizFeedback" class="score-text"></div>
+        </div>
+    </div>
+
+    <script>
+        // Bộ dữ liệu câu hỏi trắc nghiệm Khoa học tự nhiên
+        const quizData = [
+            {
+                question: "Hiện tượng nào sau đây thể hiện một phản ứng hóa học?",
+                options: ["Nước đá tan chảy thành nước lỏng", "Đinh sắt bị gỉ sét trong không khí ẩm", "Hòa tan muối ăn vào trong cốc nước", "Thủy tinh nóng chảy ở nhiệt độ cao"],
+                correct: 1
+            },
+            {
+                question: "Đơn vị đo chính thức của Lực trong hệ thống đo lường là gì?",
+                options: ["Kilôgam (kg)", "Vôn (V)", "Mã lực (HP)", "Newton 👎"],
+                correct: 3
+            },
+            {
+                question: "Bào quan nào được ví như 'nhà máy năng lượng' của tế bào?",
+                options: ["Ty thể", "Lục lạp", "Không bào", "Nhân tế bào"],
+                correct: 0
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+
+        function loadQuestion() {
+            const currentQuiz = quizData[currentQuestionIndex];
+            document.getElementById("questionField").innerText = Câu ${currentQuestionIndex + 1}: ${currentQuiz.question};
+            
+            const optionsContainer = document.getElementById("optionsField");
+            optionsContainer.innerHTML = ""; // Xóa các tùy chọn cũ
+
+            currentQuiz.options.forEach((option, index) => {
+                const button = document.createElement("button");
+                button.className = "option-btn";
+                button.innerText = option;
+                button.onclick = () => checkAnswer(index);
+                optionsContainer.appendChild(button);
+            });
+        }
+
+        function checkAnswer(selectedIndex) {
+            const currentQuiz = quizData[currentQuestionIndex];
+            const feedback = document.getElementById("quizFeedback");
+
+            if (selectedIndex === currentQuiz.correct) {
+                feedback.innerHTML = "✅ Chính xác! Bạn làm rất tốt.";
+                feedback.style.color = "var(--success)";
+            } else {
+                feedback.innerHTML = ❌ Chưa đúng rồi! Đáp án chính xác là: <strong>${currentQuiz.options[currentQuiz.correct]}</strong>;
+                feedback.style.color = "var(--warning)";
+            }
+
+            // Chuyển câu hỏi sau 2.5 giây
+            setTimeout(() => {
+                feedback.innerHTML = "";
+                currentQuestionIndex = (currentQuestionIndex + 1) % quizData.length;
+                loadQuestion();
+            }, 2500);
+        }
+
+        // Khởi chạy câu hỏi đầu tiên khi tải trang
+        loadQuestion();
+    </script>
+</body>
+</html>
